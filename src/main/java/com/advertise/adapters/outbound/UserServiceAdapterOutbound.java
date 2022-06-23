@@ -1,21 +1,20 @@
-package com.advertise.adapters;
+package com.advertise.adapters.outbound;
 
 import com.advertise.application.domain.User;
-import com.advertise.application.ports.UserServicePort;
+import com.advertise.application.ports.outbound.UserServicePort;
 import com.advertise.entities.UserEntity;
 import com.advertise.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-
+@Service
 @RequiredArgsConstructor
-public class UserServiceAdapter implements UserServicePort {
+public class UserServiceAdapterOutbound implements UserServicePort {
 
     private final UserRepository userRepository;
 
     @Override
     public void addUser(User user) {
-        user.setCreatedAt(LocalDate.now());
         userRepository.save(new UserEntity(user));
     }
 

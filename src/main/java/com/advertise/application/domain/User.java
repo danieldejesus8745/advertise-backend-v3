@@ -1,15 +1,23 @@
 package com.advertise.application.domain;
 
+import com.advertise.application.dto.UserDTO;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class User {
 
     private UUID uuid;
-    private String name;
-    private String email;
-    private String password;
+    private final String name;
+    private final String email;
+    private final String password;
     private LocalDate createdAt;
+
+    public User(UserDTO userDTO) {
+        name = userDTO.getName();
+        email = userDTO.getEmail();
+        password = userDTO.getPassword();
+    }
 
     public UUID getUuid() {
         return uuid;

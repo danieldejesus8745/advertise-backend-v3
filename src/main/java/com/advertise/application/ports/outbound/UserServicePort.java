@@ -1,4 +1,4 @@
-package com.advertise.application.ports;
+package com.advertise.application.ports.outbound;
 
 import com.advertise.application.domain.User;
 
