@@ -18,4 +18,8 @@ public class UserService {
         userServicePort.addUser(user);
     }
 
+    public String login(String email) {
+        return userServicePort.login(email);
+    }
+
 }

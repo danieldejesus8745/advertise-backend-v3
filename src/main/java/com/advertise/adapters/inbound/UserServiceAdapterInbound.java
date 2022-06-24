@@ -17,4 +17,9 @@ public class UserServiceAdapterInbound implements UserServicePort {
         userService.addUser(user);
     }
 
+    @Override
+    public String login(String email, String password) {
+        return userService.login(email); // TODO parei aqui
+    }
+
 }

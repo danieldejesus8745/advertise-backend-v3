@@ -36,4 +36,7 @@ public class UserEntity {
         this.createdAt = user.getCreatedAt();
     }
 
+    public String getPassword() {
+        return password;
+    }
 }

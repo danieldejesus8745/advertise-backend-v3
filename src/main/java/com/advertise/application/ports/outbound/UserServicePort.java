@@ -6,4 +6,6 @@ public interface UserServicePort {
 
     void addUser(User user);
 
+    String login(String email);
+
 }
