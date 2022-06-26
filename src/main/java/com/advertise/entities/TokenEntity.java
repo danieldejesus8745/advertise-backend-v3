@@ -22,7 +22,7 @@ public class TokenEntity {
     @Column(nullable = false)
     private long expiration;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private UUID owner;
 
     @Column(nullable = false)

@@ -2,13 +2,18 @@ package com.advertise.adapters.outbound;
 
 import com.advertise.application.domain.User;
 import com.advertise.application.ports.outbound.UserOutboundPort;
+import com.advertise.application.utils.Messages;
 import com.advertise.entities.UserEntity;
 import com.advertise.mappers.UserMapper;
 import com.advertise.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+
+import static com.advertise.application.utils.Messages.EMAIL_ALREADY_REGISTERED;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +24,11 @@ public class UserOutboundAdapter implements UserOutboundPort {
 
     @Override
     public void addUser(User user) {
-        userRepository.save(userMapper.toUserEntity(user));
+        try {
+            userRepository.save(userMapper.toUserEntity(user));
+        } catch (DataIntegrityViolationException | ConstraintViolationException exception) {
+            throw new IllegalStateException(EMAIL_ALREADY_REGISTERED.getDescription());
+        }
     }
 
     @Override
