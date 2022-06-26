@@ -1,4 +1,4 @@
-package com.advertise.application.dto;
+package com.advertise.dto;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,6 +11,10 @@ public class UserDTO {
     private String password;
     private LocalDate createdAt;
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
     public String getName() {
         return name;
     }
@@ -21,6 +25,10 @@ public class UserDTO {
 
     public String getPassword() {
         return password;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
     }
 
     public void setPassword(String password) {

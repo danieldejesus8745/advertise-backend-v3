@@ -2,7 +2,7 @@ package com.advertise.application.ports.inbound;
 
 import com.advertise.application.domain.User;
 
-public interface UserServicePort {
+public interface UserInboundPort {
 
     void addUser(User user);
 

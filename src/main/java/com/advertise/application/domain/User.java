@@ -1,23 +1,24 @@
 package com.advertise.application.domain;
 
-import com.advertise.application.dto.UserDTO;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class User {
 
     private UUID uuid;
-    private final String name;
-    private final String email;
-    private final String password;
+    private String name;
+    private String email;
+    private String password;
     private LocalDate createdAt;
 
-    public User(UserDTO userDTO) {
-        name = userDTO.getName();
-        email = userDTO.getEmail();
-        password = userDTO.getPassword();
+    public User() {
     }
+
+//    public User(UserDTO userDTO) {
+//        name = userDTO.getName();
+//        email = userDTO.getEmail();
+//        password = userDTO.getPassword();
+//    }
 
     public UUID getUuid() {
         return uuid;
@@ -37,6 +38,22 @@ public class User {
 
     public LocalDate getCreatedAt() {
         return createdAt;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setCreatedAt(LocalDate createdAt) {

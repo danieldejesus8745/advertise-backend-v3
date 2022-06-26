@@ -1,7 +1,6 @@
 package com.advertise.entities;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -11,24 +10,20 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Getter
 @Setter
-@NoArgsConstructor
-@Entity(name = "users")
-public class UserEntity {
+@Getter
+@Entity(name = "tokens")
+public class TokenEntity {
 
     @Id
     @GeneratedValue
     private UUID uuid;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+    @Column(nullable = false)
+    private long expiration;
 
-    @Column(nullable = false, length = 100)
-    private String email;
-
-    @Column(nullable = false, length = 100)
-    private String password;
+    @Column(nullable = false)
+    private UUID owner;
 
     @Column(nullable = false)
     private LocalDate createdAt;
