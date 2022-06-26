@@ -1,6 +1,8 @@
 package com.advertise.config;
 
-import com.advertise.application.ports.outbound.UserServicePort;
+import com.advertise.application.ports.outbound.TokenOutboundPort;
+import com.advertise.application.ports.outbound.UserOutboundPort;
+import com.advertise.application.services.TokenService;
 import com.advertise.application.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -12,16 +14,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class Config {
 
-    private final UserServicePort userServicePort;
+    private final UserOutboundPort userOutboundPort;
+    private final TokenOutboundPort tokenOutboundPort;
 
     @Bean
     public UserService userService() {
-        return new UserService(userServicePort);
+        return new UserService(userOutboundPort);
     }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new Argon2PasswordEncoder();
+    }
+
+    @Bean
+    public TokenService tokenService() {
+        return new TokenService(tokenOutboundPort);
     }
 
 }

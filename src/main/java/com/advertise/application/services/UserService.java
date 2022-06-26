@@ -1,25 +1,25 @@
 package com.advertise.application.services;
 
 import com.advertise.application.domain.User;
-import com.advertise.application.ports.outbound.UserServicePort;
+import com.advertise.application.ports.outbound.UserOutboundPort;
 
 import java.time.LocalDate;
 
 public class UserService {
 
-    private final UserServicePort userServicePort;
+    private final UserOutboundPort userOutboundPort;
 
-    public UserService(UserServicePort userServicePort) {
-        this.userServicePort = userServicePort;
+    public UserService(UserOutboundPort userOutboundPort) {
+        this.userOutboundPort = userOutboundPort;
     }
 
     public void addUser(User user) {
         user.setCreatedAt(LocalDate.now());
-        userServicePort.addUser(user);
+        userOutboundPort.addUser(user);
     }
 
-    public String login(String email) {
-        return userServicePort.login(email);
+    public User login(String email) {
+        return userOutboundPort.login(email);
     }
 
 }
