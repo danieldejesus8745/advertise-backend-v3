@@ -2,7 +2,6 @@ package com.advertise.adapters.outbound;
 
 import com.advertise.application.domain.User;
 import com.advertise.application.ports.outbound.UserOutboundPort;
-import com.advertise.application.utils.Messages;
 import com.advertise.entities.UserEntity;
 import com.advertise.mappers.UserMapper;
 import com.advertise.repositories.UserRepository;
